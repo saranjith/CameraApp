@@ -1,6 +1,10 @@
 
 bin/res/crunch/drawable-xxhdpi/ic_launcher.png
 
+.project
+
+proguard-project.txt
+
 bin/AndroidManifest.xml
 
 bin/CameraApp.apk
