@@ -50,3 +50,7 @@ bin/classes/in/saranjith/cameraapp/R.class
 bin/dexedLibs/android-support-v4-5019cf004bd4c33d1d758cb61c31f05b.jar
 
 bin/res/crunch/drawable-hdpi/ic_launcher.png
+/bin
+/ic_launcher-web.png
+/project.properties
+/assets
