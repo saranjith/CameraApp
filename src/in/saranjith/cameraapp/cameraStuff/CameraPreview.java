@@ -1,4 +1,4 @@
-package in.saranjith.cameraapp;
+package in.saranjith.cameraapp.cameraStuff;
 
 import java.io.IOException;
 

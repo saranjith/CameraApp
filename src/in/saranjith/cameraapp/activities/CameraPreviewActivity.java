@@ -1,5 +1,9 @@
-package in.saranjith.cameraapp;
+package in.saranjith.cameraapp.activities;
 
+import in.saranjith.cameraapp.R;
+import in.saranjith.cameraapp.cameraStuff.CameraPreview;
+import in.saranjith.cameraapp.cameraStuff.CameraUtils;
+import in.saranjith.cameraapp.cameraStuff.SavePicture;
 import android.app.Activity;
 import android.hardware.Camera;
 import android.os.Bundle;
@@ -39,7 +43,12 @@ public class CameraPreviewActivity extends Activity {
 	/**
 	 * FrameLayout to show camera preview
 	 */
-	FrameLayout preview;
+	private FrameLayout preview;
+	
+	/**
+	 * instance of SavePicture
+	 */
+	private SavePicture savePicture;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,8 @@ public class CameraPreviewActivity extends Activity {
 		cameraUtils = new CameraUtils(CameraPreviewActivity.this);
 
 		mCamera = cameraUtils.getCameraInstance();
+		
+		savePicture = new SavePicture(CameraPreviewActivity.this);
 
 		initViews();
 	}
@@ -78,9 +89,28 @@ public class CameraPreviewActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-
+				mCamera.takePicture(null, null, savePicture);
 			}
 		});
 	}
+	
+	@Override
+    protected void onPause() {
+        super.onPause();
+        //releaseMediaRecorder();       // if you are using MediaRecorder, release it first
+        releaseCamera();              // release the camera immediately on pause event
+    }
+
+	
+	/**
+	 * release camera
+	 */
+	 private void releaseCamera(){
+	        if (mCamera != null){
+	            mCamera.release();        // release the camera for other applications
+	            mCamera = null;
+	        }
+	    }
+	
 
 }

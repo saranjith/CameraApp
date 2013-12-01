@@ -1,5 +1,8 @@
-package in.saranjith.cameraapp;
+package in.saranjith.cameraapp.activities;
 
+import in.saranjith.cameraapp.R;
+import in.saranjith.cameraapp.cameraStuff.CameraUtils;
+import in.saranjith.cameraapp.constants.Constants;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,10 +20,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	/**
-	 * for Logging
-	 */
-	private String tag = "Camera_Experiment";
+	
 
 	/**
 	 * Button to start camera
@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
 					 * the device has a camera that we can use What are you
 					 * waiting for? Make use of it, damn it!
 					 */
-					Log.i(tag, "Camera is Present");
+					Log.i(Constants.tag, "Camera is Present");
 					startActivity(cameraPreviewIntent);
 				}else{
 					Toast.makeText(MainActivity.this,"Camera not present" ,Toast.LENGTH_SHORT).show();
